@@ -60,16 +60,16 @@ public class PersonService {
     public String createRandomPhoneNumber() {
         StringBuilder phoneNumber = new StringBuilder();
 
-        phoneNumber.append(random.nextInt(9) + 1); // Phone numbers first digit cannot start with 0.
+        phoneNumber.append(random.nextInt(1, 10)); // Phone numbers first digit cannot start with 0.
         for(int i = 0; i < 9; i++) {
-            phoneNumber.append(random.nextInt(1, 9));
+            phoneNumber.append(random.nextInt(1, 10));
         }
 
         return phoneNumber.toString();
     }
 
     public String createRandomAge() {
-        return String.valueOf(random.nextInt(85) + 16);
+        return String.valueOf(random.nextInt(16, 86));
     }
 
 }
