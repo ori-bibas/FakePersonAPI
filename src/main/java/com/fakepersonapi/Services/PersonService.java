@@ -13,7 +13,9 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-    private String firstName, lastName;
+    @Autowired
+    private AddressService addressService;
+
     private final Random random = new Random();
 
     public Person createPerson() {
@@ -22,8 +24,8 @@ public class PersonService {
         int randomFirstNamePK = random.nextInt((int) size) + 1;
         int randomLastNamePK = random.nextInt((int) size) + 1;
 
-        firstName = personRepository.getReferenceById((long) randomFirstNamePK).getFirstName();
-        lastName = personRepository.getReferenceById((long) randomLastNamePK).getLastName();
+        String firstName = personRepository.getReferenceById((long) randomFirstNamePK).getFirstName();
+        String lastName = personRepository.getReferenceById((long) randomLastNamePK).getLastName();
 
         String emailAddress = createRandomEmail(firstName, lastName);
         String phoneNumber = createRandomPhoneNumber();
@@ -35,6 +37,8 @@ public class PersonService {
         randomPerson.setEmailAddress(emailAddress);
         randomPerson.setPhoneNumber(phoneNumber);
         randomPerson.setAge(age);
+
+        randomPerson.setAddress(addressService.createAddress());
 
         return randomPerson;
     }
