@@ -14,7 +14,7 @@ public class PersonController {
 
     @GetMapping("/person")
     public Person getPerson() {
-        return personService.createPerson();
+        return null;
     }
 
 }

@@ -14,7 +14,7 @@ public class AddressController {
 
     @GetMapping("/address")
     public Address address() {
-        return addressService.createAddress();
+        return null;
     }
 
 }
